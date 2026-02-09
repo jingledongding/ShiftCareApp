@@ -46,36 +46,36 @@ export default function DoctorsScreen() {
   };
 
   const renderContent = () => {
-    if (isLoading) {
-      return (
-        <View className="flex-1 items-center justify-center p-6">
-          <ActivityIndicator size="large" className="mb-4" />
-          <Text className="text-muted-foreground text-lg">Loading doctors...</Text>
-        </View>
-      );
-    }
+    // if (isLoading) {
+    //   return (
+    //     <View className="flex-1 items-center justify-center p-6">
+    //       <ActivityIndicator size="large" className="mb-4" />
+    //       <Text className="text-muted-foreground text-lg">Loading doctors...</Text>
+    //     </View>
+    //   );
+    // }
 
-    if (isError) {
-      return (
-        <View className="flex-1 items-center justify-center p-6">
-          <Card className="w-full">
-            <CardContent className="p-6">
-              <View className="items-center">
-                <Text className="text-destructive text-center text-lg font-semibold mb-2">
-                  Error Loading Doctors
-                </Text>
-                <Text className="text-muted-foreground text-center text-sm mb-6">
-                  {(error as any)?.message || 'Failed to load doctor data. Please check your connection and try again.'}
-                </Text>
-                <Button onPress={refetch} variant="default">
-                  <Text>Retry</Text>
-                </Button>
-              </View>
-            </CardContent>
-          </Card>
-        </View>
-      );
-    }
+    // if (isError) {
+    //   return (
+    //     <View className="flex-1 items-center justify-center p-6">
+    //       <Card className="w-full">
+    //         <CardContent className="p-6">
+    //           <View className="items-center">
+    //             <Text className="text-destructive text-center text-lg font-semibold mb-2">
+    //               Error Loading Doctors
+    //             </Text>
+    //             <Text className="text-muted-foreground text-center text-sm mb-6">
+    //               {(error as any)?.message || 'Failed to load doctor data. Please check your connection and try again.'}
+    //             </Text>
+    //             <Button onPress={refetch} variant="default">
+    //               <Text>Retry</Text>
+    //             </Button>
+    //           </View>
+    //         </CardContent>
+    //       </Card>
+    //     </View>
+    //   );
+    // }
 
     // Use API data if available, otherwise fall back to local JSON
     const doctorData = data && data.length > 0 ? data : DoctorJson;
