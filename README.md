@@ -1,320 +1,323 @@
 # ShiftCare Doctor Booking App
 
-A React Native mobile application for booking doctor appointments. View available doctors, check their weekly schedules, and manage your bookings locally.
+<div align="center">
 
-## Features
+![React Native](https://img.shields.io/badge/React_Native-0.76.7-61dafb?logo=react)
+![Expo](https://img.shields.io/badge/Expo-54.0.33-000020?logo=expo)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.7.2-3178c6?logo=typescript)
+![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20Android-lightgrey)
 
-- **Doctors List**: Browse all available doctors with their timezones
-- **Doctor Availability**: Interactive calendar table showing weekly availability with 30-minute time slots
-- **Appointment Booking**: Book appointments through a confirmation screen
-- **My Bookings**: View and cancel your scheduled appointments
-- **Local Persistence**: All data stored locally using MMKV storage
-- **Pull to Refresh**: Refresh appointment lists on the bookings screen
+A modern medical appointment booking application with a clean, healthcare-focused green theme.
 
-## Tech Stack
+[Features](#-features) • [Tech Stack](#-tech-stack) • [Installation](#-installation) • [Usage](#-usage) • [Screenshots](#-screenshots)
 
-- **React Native**: v0.76.7 with Expo v54
-- **TypeScript**: Type-safe development
-- **NativeWind**: Tailwind CSS for React Native (v4.2.1)
-- **React Navigation**: v7 for navigation (Stack and Bottom Tabs)
-- **Redux Toolkit**: State management with redux-persist
-- **MMKV**: Fast local key-value storage (react-native-mmkv v4.1.2)
-- **FlashList**: Optimized list rendering from Shopify
-- **Class Variance Authority (CVA)**: Component variant management
+</div>
 
-## Project Structure
+---
+
+## ✨ Features
+
+### Core Functionality
+- 🏥 **Doctor Directory** - Browse available healthcare providers with timezone information
+- 📅 **Interactive Availability Calendar** - Weekly schedule grid with 30-minute time slots
+- 📝 **Appointment Booking** - streamlined booking flow with confirmation screen
+- 💾 **Local Persistence** - All bookings stored locally using MMKV for fast access
+- 🔄 **Pull to Refresh** - Refresh appointment lists with native gestures
+
+### User Experience
+- 🎨 **Medical Healthcare Theme** - Professional green color scheme for trust and clarity
+- 🌙 **Dark Mode Support** - Automatic theme switching based on system preferences
+- 📱 **Native Performance** - Optimized lists with FlashList for smooth scrolling
+- ♿ **Accessible Design** - High contrast ratios and clear visual indicators
+- 🎯 **Direct Booking Flow** - One-tap booking from calendar to confirmation
+
+### Technical Highlights
+- ⚡ **Fast Navigation** - React Navigation v7 with stack and tab navigators
+- 🗃️ **State Management** - Redux Toolkit with persistence
+- 🎨 **Component System** - shadcn-style UI components with CVA variants
+- 📐 **Type-Safe** - Full TypeScript coverage
+- 🌿 **Styling** - NativeWind (Tailwind CSS) for React Native
+
+---
+
+## 🛠 Tech Stack
+
+| Category | Technology | Version |
+|----------|-----------|---------|
+| **Framework** | React Native | 0.76.7 |
+| **Platform** | Expo | 54.0.33 |
+| **Language** | TypeScript | 5.7.2 |
+| **Styling** | NativeWind | 4.2.1 |
+| **Navigation** | React Navigation | 7.x |
+| **State** | Redux Toolkit + Persist | latest |
+| **Storage** | MMKV | 4.1.2 |
+| **Lists** | FlashList | 2.0.2 |
+| **Components** | @rn-primitives | 1.x |
+
+---
+
+## 📁 Project Structure
 
 ```
 src/
-├── assets/           # Static assets (doctor data)
-├── components/       # Reusable UI components
-│   ├── ui/          # Base UI components (shadcn-style)
-│   └── DoctorCard.tsx
-├── lib/             # Utility functions
-├── redux/           # Redux store and slices
-├── router/          # Navigation configuration
-├── screens/         # Screen components
-│   ├── booking/                    # My Bookings screen
-│   ├── booking-confirmation/       # Booking confirmation screen
-│   ├── doctor-detail/              # Doctor availability calendar
-│   └── doctors/                    # Doctors list screen
-├── storage/         # Local storage services
-│   ├── appointments.ts            # Appointment storage (MMKV)
-│   └── index.tsx                  # Redux persist storage
-└── types/           # TypeScript type definitions
-    ├── appointment.ts
-    └── doctor.ts
+├── assets/                    # Static assets and mock data
+│   └── doctor.json           # Doctor availability data
+├── components/                # Reusable components
+│   ├── ui/                   # Base UI components (shadcn-style)
+│   │   ├── alert-dialog.tsx  # Modal dialogs
+│   │   ├── button.tsx        # Button variants
+│   │   ├── card.tsx          # Card containers
+│   │   ├── dialog.tsx        # Dialog component
+│   │   ├── label.tsx         # Form labels
+│   │   └── text.tsx          # Typography
+│   └── DoctorCard.tsx        # Doctor info card
+├── lib/                      # Utility functions
+│   └── utils.ts             # Helper functions
+├── redux/                    # State management
+│   ├── slices/              # Redux slices
+│   ├── query/               # API queries
+│   └── index.tsx            # Store configuration
+├── router/                   # Navigation
+│   ├── index.tsx            # Root navigator
+│   └── tabs.tsx             # Bottom tabs
+├── screens/                  # Screen components
+│   ├── doctors/             # Doctor list (home)
+│   ├── doctor-detail/       # Availability calendar
+│   ├── booking-confirmation/# # Booking confirmation
+│   └── booking/             # My bookings
+├── storage/                  # Local storage
+│   ├── appointments.ts      # MMKV storage service
+│   └── index.tsx            # Redux persist storage
+└── types/                    # TypeScript definitions
+    ├── appointment.ts       # Appointment types
+    └── doctor.ts            # Doctor types
 ```
 
-## Setup & Installation
+---
+
+## 🚀 Installation
 
 ### Prerequisites
 
-- Node.js 18+ and npm/yarn/pnpm
-- iOS Simulator (macOS only) or Android Emulator
-- Expo CLI: `npm install -g expo-cli`
+- **Node.js** 18+
+- **pnpm** (recommended) or npm/yarn
+- **iOS Simulator** (macOS) or **Android Emulator**
+- **Expo CLI**: `npm install -g expo-cli`
 
-### Installation Steps
+### Step 1: Clone & Install
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd ShiftCareApp
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/jingledongding/ShiftCareApp.git
+cd ShiftCareApp
 
-2. **Install dependencies**
-   ```bash
-   pnpm install
-   # or
-   npm install
-   # or
-   yarn install
-   ```
+# Install dependencies
+pnpm install
+```
 
-3. **iOS Setup** (macOS only)
-   ```bash
-   cd ios
-   pod install
-   cd ..
-   ```
+### Step 2: iOS Setup (macOS only)
 
-4. **Start the development server**
-   ```bash
-   # Start Metro bundler
-   npm start
+```bash
+cd ios
+pod install
+cd ..
+```
 
-   # In a separate terminal, run on iOS
-   npm run ios
+### Step 3: Start Development
 
-   # Or run on Android
-   npm run android
-   ```
+```bash
+# Start Metro bundler with cache cleared
+pnpm start -c
 
-5. **Using Expo** (alternative)
-   ```bash
-   npx expo start
-   ```
-   Then scan the QR code with Expo Go app on your mobile device.
+# In another terminal, run on iOS
+pnpm ios
 
-## Usage
+# Or run on Android
+pnpm android
+```
 
-### Viewing Doctors
+### Alternative: Expo Go
 
-1. Launch the app
-2. Navigate to the **Doctors** tab
-3. Browse the list of available doctors
-4. Tap on a doctor card to view their availability
+```bash
+# Start Expo dev server
+npx expo start
 
-### Booking an Appointment
+# Scan QR code with Expo Go app on mobile device
+```
 
-1. From the **Doctors** tab, tap on a doctor
-2. View their weekly availability calendar
-3. Green dots indicate available time slots
-4. Tap an available slot to select it
-5. Tap the **Book** button to proceed to confirmation
-6. Review the appointment details on the confirmation screen
-7. Tap **Confirm Booking** to finalize
+---
 
-### Managing Bookings
+## 📖 Usage
 
-1. Navigate to the **My Bookings** tab
-2. View all your scheduled appointments grouped by doctor
-3. Tap **Cancel** on any appointment to remove it
-4. Use **Clear All** to remove all appointments at once
-5. Pull down to refresh the list
+### 1. Browse Doctors
 
-## Screen Descriptions
+The app opens to the **Doctors** tab showing all available healthcare providers.
 
-### Doctors Screen (Home)
-- Lists all available doctors
-- Shows each doctor's timezone
-- Tap to view detailed availability
+### 2. Check Availability
 
-### Doctor Detail Screen
-- Displays doctor information
-- Interactive calendar table with:
-  - Days of week as columns (Mon-Sun)
-  - Time slots as rows (6AM-8PM, 30-minute intervals)
-- Visual indicators:
-  - **Green dot**: Available slot
-  - **White dot**: Selected slot
-  - **Red "B"**: Already booked
-  - **Dash (—)**: Outside availability
+- Tap any doctor card to view their weekly availability
+- Calendar shows:
+  - **Green "Book"** - Available time slots
+  - **Gray "Booked"** - Already reserved slots
+  - **Dash (—)** - Outside availability
 
-### Booking Confirmation Screen
-- Shows appointment details to confirm
-- Displays doctor name, day, time, and timezone
-- Important notice about arrival time
-- Confirm or cancel buttons
+### 3. Book Appointment
 
-### My Bookings Screen
-- Lists all booked appointments
-- Grouped by doctor
-- Cancel individual appointments
-- Clear all appointments option
-- Pull to refresh
+1. Tap any available "Book" slot
+2. Review appointment details on confirmation screen
+3. Tap **Confirm Booking** to finalize
 
-## Design Decisions & Assumptions
+### 4. Manage Bookings
 
-### Time Handling
+- Navigate to **My Bookings** tab
+- View all scheduled appointments grouped by doctor
+- Tap **Cancel** to remove individual appointments
+- Use **Clear All** to remove all at once
+- Pull down to refresh
 
-1. **Time Format**: All times displayed in 12-hour AM/PM format
-2. **Timezone Handling**: Doctor's timezone is displayed but NOT converted to user's local timezone
-   - Assumption: Users are in the same timezone as doctors
-   - Future enhancement: Add timezone conversion using libraries like `date-fns-tz`
+---
 
-3. **Time Slots**: Generated from 6:00 AM to 8:00 PM in 30-minute intervals
-   - Assumption: Standard business hours for most doctors
-   - Can be customized based on API data
+## 🎨 Design System
 
-### Storage Strategy
+### Color Palette
 
-1. **No Backend**: All data stored locally using MMKV
-   - Appointments persist across app restarts
-   - No authentication required (demo purposes)
-   - Data is device-specific
+The app uses a healthcare-focused green theme:
 
-2. **Doctor Data**: Currently loaded from local JSON file
-   - File: `src/assets/doctor.json`
-   - Future: Will be fetched from API endpoint
+| Role | Light Mode | Dark Mode |
+|------|-----------|-----------|
+| Primary | `hsl(142.1, 76.2%, 36.3%)` | `hsl(142.1, 70%, 50%)` |
+| Background | `hsl(0, 0%, 100%)` | `hsl(222.2, 84%, 4.9%)` |
+| Card | `hsl(0, 0%, 100%)` | `hsl(222.2, 84%, 4.9%)` |
+| Border | `hsl(214.3, 31.8%, 91.4%)` | `hsl(217.2, 32.6%, 17.5%)` |
 
-### Navigation Flow
+### Typography
 
-1. **Two-Step Booking**: Confirmation screen between selection and booking
-   - Prevents accidental bookings
-   - Gives users a chance to review details
-   - Allows cancellation before persistence
+- **Headings**: Bold, high contrast
+- **Body**: Regular weight, readable sizes
+- **Secondary**: Muted colors for supporting text
 
-2. **Calendar Navigation**: Horizontal scrolling for time slots
-   - Vertical scrolling for all time slots
-   - Fixed day columns for easy comparison
+### Spacing
 
-### UI/UX Choices
+- Consistent 4px base unit
+- Generous padding for touch targets (min 44px)
+- Clear visual hierarchy with spacing scale
 
-1. **Calendar Table Format**: Used instead of vertical list
-   - Easier to compare availability across days
-   - Standard pattern for scheduling apps
+---
 
-2. **Visual Indicators**: Color-coded slot states
-   - Green = available
-   - White = selected
-   - Red = booked
-   - Gray = unavailable
+## 🧪 Testing
 
-3. **Grouped Bookings**: Appointments grouped by doctor
-   - Easier to see all appointments per doctor
-   - Reduces visual clutter
+```bash
+# Run all tests
+pnpm test
 
-## Known Limitations
+# Run tests in watch mode
+pnpm test --watch
 
-### Current Limitations
+# Run tests with coverage
+pnpm test --coverage
+```
 
-1. **No Real Backend**
-   - All data stored locally on device
-   - Appointments don't sync across devices
+### Test Structure
+
+```
+src/__tests__/
+└── storage/
+    └── appointments.test.ts  # MMKV storage tests
+```
+
+---
+
+## 🔧 Troubleshooting
+
+### Metro bundler issues
+
+```bash
+# Clear cache and restart
+pnpm start -c
+```
+
+### iOS build errors
+
+```bash
+# Reinstall pods
+cd ios && pod install && cd ..
+
+# Clean build folder
+pnpm ios -- --clean
+```
+
+### Android build errors
+
+```bash
+# Clean Android build
+cd android && ./gradlew clean && cd ..
+
+# Rebuild
+pnpm android
+```
+
+### TypeScript errors
+
+```bash
+# Type check
+npx tsc --noEmit
+```
+
+### Storage not persisting
+
+1. Ensure app has been rebuilt after installing MMKV
+2. Check platform-specific setup:
+   - iOS: Pods should be linked
+   - Android: Gradle sync complete
+
+---
+
+## 🚧 Known Limitations
+
+### Current Scope
+
+1. **Local-Only Data**
+   - No backend synchronization
+   - Device-specific storage
    - No multi-user support
 
 2. **No Authentication**
-   - Anyone can book/cancel appointments
-   - No user accounts or profiles
-   - No booking history tracking
+   - Demo purposes only
+   - Anyone can book/cancel
+   - No user accounts
 
-3. **Timezone Support**
-   - No automatic timezone conversion
+3. **Timezone Display**
    - Shows doctor's timezone as-is
-   - User must manually calculate time differences
+   - No automatic conversion
+   - Manual calculation required
 
-4. **Conflict Handling**
-   - No real-time conflict detection
-   - Double-booking possible if multiple users
-   - No waitlist functionality
+### Planned Enhancements
 
-5. **Data Persistence**
-   - Data lost if app is uninstalled
-   - No cloud backup
-   - No export/import functionality
+- [ ] Backend API integration
+- [ ] User authentication
+- [ ] Timezone conversion
+- [ ] Email/SMS confirmations
+- [ ] Push notification reminders
+- [ ] Rescheduling functionality
+- [ ] Recurring appointments
+- [ ] Waitlist feature
+- [ ] Comprehensive E2E tests
 
-6. **Error Handling**
-   - Limited network error handling
-   - No offline mode for API calls
-   - Basic error messages only
+---
 
-### Future Enhancements
+## 📄 API Integration (Future)
 
-1. **Backend Integration**
-   - Connect to real API server
-   - User authentication and authorization
-   - Real-time data synchronization
-
-2. **Timezone Conversion**
-   - Convert times to user's local timezone
-   - Display multiple timezones
-   - Timezone-aware notifications
-
-3. **Enhanced Features**
-   - Email/SMS confirmations
-   - Push notification reminders
-   - Rescheduling instead of cancel/rebook
-   - Recurring appointments
-   - Waitlist functionality
-
-4. **Testing**
-   - Unit tests for business logic
-   - Integration tests for navigation
-   - E2E tests for critical flows
-   - Accessibility testing
-
-5. **Performance**
-   - Optimize for large doctor lists
-   - Virtualize calendar rendering
-   - Cache API responses
-
-6. **Analytics**
-   - Track booking patterns
-   - Monitor popular time slots
-   - User engagement metrics
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Metro bundler issues**
-   ```bash
-   npx expo start -c
-   ```
-   The `-c` flag clears the Metro cache.
-
-2. **iOS build errors**
-   ```bash
-   cd ios && pod install && cd ..
-   ```
-
-3. **TypeScript errors**
-   ```bash
-   npm run type-check
-   ```
-
-4. **Storage not persisting**
-   - Ensure MMKV is properly linked
-   - Rebuild the app: `npm run ios` or `npm run android`
-
-5. **Navigation not working**
-   - Check that all screens are registered in `src/router/index.tsx`
-   - Verify navigation types match route params
-
-## API Integration (Future)
-
-The app is designed to integrate with the following API endpoint:
+The app is designed to integrate with:
 
 ```
 GET https://raw.githubusercontent.com/suyogshiftcare/jsontest/main/available.json
 ```
 
-Expected response format:
+**Expected Response:**
 ```json
 [
   {
-    "name": "Doctor Name",
+    "name": "Dr. Sarah Johnson",
     "timezone": "America/New_York",
     "day_of_week": "Monday",
     "available_at": "9:00AM",
@@ -323,30 +326,55 @@ Expected response format:
 ]
 ```
 
-To integrate:
-1. Replace local JSON loading with API fetch in `src/screens/doctors/index.tsx`
+**Integration Steps:**
+1. Replace local JSON loading in `src/screens/doctors/index.tsx`
 2. Add error handling for network failures
 3. Implement loading states
-4. Add pull-to-refresh for doctor list
-
-## Contributing
-
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License.
-
-## Contact
-
-For questions or support, please open an issue on GitHub.
+4. Add retry logic
+5. Enable pull-to-refresh
 
 ---
 
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'feat: add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+### Commit Convention
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
+- `feat:` - New features
+- `fix:` - Bug fixes
+- `refactor:` - Code refactoring
+- `docs:` - Documentation changes
+- `test:` - Adding/updating tests
+- `chore:` - Maintenance tasks
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 📮 Contact
+
+For questions or support, please:
+- Open an issue on [GitHub](https://github.com/jingledongding/ShiftCareApp/issues)
+- Contact maintainers
+
+---
+
+<div align="center">
+
 **Built with** ❤️ **using React Native and Expo**
-# ShiftCareApp
+
+[⬆ Back to Top](#shiftcare-doctor-booking-app)
+
+</div>
